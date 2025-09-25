@@ -1,0 +1,1502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamFlix - Premium Streaming Experience</title>
+    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(229,9,20,0.7) 100%);
+        }
+        
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+        
+        .content-row {
+            scroll-snap-type: x mandatory;
+        }
+        
+        .content-item {
+            scroll-snap-align: start;
+        }
+        
+        .nav-blur {
+            backdrop-filter: blur(10px);
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        .play-button {
+            transition: all 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+            background-color: rgba(229,9,20,0.9);
+        }
+    </style>
+</head>
+<body class="bg-black text-white overflow-x-hidden">
+    <!-- Hero Section with Vanta.js Globe -->
+    <div id="hero" class="relative h-screen flex items-center justify-center">
+        <div class="absolute inset-0 z-0" id="vanta-bg"></div>
+        <div class="hero-gradient absolute inset-0 z-10"></div>
+        
+        <!-- Navigation -->
+        <nav class="fixed top-0 w-full z-50 nav-blur py-4 px-6 md:px-12 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-red-600 font-bold text-2xl md:text-3xl">StreamFlix</h1>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-red-500 transition-colors">Home</a>
+                <a href="#" class="hover:text-red-500 transition-colors">Series</a>
+                <a href="#" class="hover:text-red-500 transition-colors">Movies</a>
+                <a href="#" class="hover:text-red-500 transition-colors">New & Popular</a>
+                <a href="#" class="hover:text-red-500 transition-colors">My List</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="p-2 hover:bg-gray-800 rounded-full">
+                    <i data-feather="search"></i>
+                </button>
+                <button class="p-2 hover:bg-gray-800 rounded-full">
+                    <i data-feather="bell"></i>
+                </button>
+                <div class="w-8 h-8 bg-red-600 rounded-full"></div>
+            </div>
+        </nav>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-4 md:px-0" data-aos="fade-up">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Unlimited Entertainment</h1>
+            <p class="text-xl md:text-2xl mb-8">Stream thousands of movies and TV shows anytime, anywhere.</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4">
+                <button class="bg-red-600 hover:bg-red-700 py-3 px-8 rounded-lg text-lg font-semibold flex items-center justify-center">
+                    <i data-feather="play" class="mr-2"></i> Start Watching
+                </button>
+                <button class="bg-gray-800 hover:bg-gray-700 py-3 px-8 rounded-lg text-lg font-semibold">
+                    Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Sections -->
+    <div class="py-12 px-4 md:px-12">
+        <!-- Trending Now -->
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Trending Now</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/1')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/2')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/3')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/4')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/5')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Popular on StreamFlix -->
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Popular on StreamFlix</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/6')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/7')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/8')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/9')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/10')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Continue Watching -->
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Continue Watching</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Series</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">New For You</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Fantasy TV</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">SiFi General</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Hollywood</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Indian Select</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Recommended Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Binge-Worthy Set</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Action And Adventure Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Top Rated TV Series</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Comedy</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">This Week Top 10</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">History And Educational Content</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Mystery And Thriller TV</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Drama TV</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Horror</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Romance</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Kids And Family</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Anime</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Nollywood Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">K Drama</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Military And War Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">18+ Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Sports Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Alien Movies</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="mb-16" data-aos="fade-up">
+            <h2 class="text-2xl md:text-3xl font-bold mb-6">Morexx Favorites</h2>
+            <div class="content-row flex overflow-x-auto space-x-4 pb-4 hide-scrollbar">
+                <!-- Content Items -->
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/11')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/12')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/13')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover" style="background-image: url('http://static.photos/movies/640x360/14')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="content-item flex-shrink-0 w-64 h-36 md:w-80 md:h-44 bg-cover bg-center rounded-lg card-hover极速赛车开奖官网记录" style="background-image: url('http://static.photos/movies/640x360/15')">
+                    <div class="h-full w-full bg-black bg-opacity-40 hover:bg-opacity-20 transition-all rounded-lg flex items-center justify-center">
+                        <button class="play-button bg-red-600 bg-opacity-80 rounded-full p-3">
+                            <i data-feather="play" class="w-6 h-6"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div> <button class="bg-red-600 hover:bg-red-700 py-3 px-8 rounded-lg text-lg font-semibold flex items-center justify-center"><class="mr-2"></i><a href="MovieFlixWebsite.html">Back To The Top</a></button>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-12 px-4 md:px-12">
+        <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Company</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Jobs</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Support</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">FAQ</a></li>
+                    <li><a href="#" class="text极速赛车开奖官网记录-gray-400 hover:text-white">Help Center</a></li><a href="#" class="text-gray-400 hover:text-white">Terms of Use</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Legal</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Cookie Preferences</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-white">Corporate Information</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold mb-4">Connect</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-6xl mx-auto mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <p>&copy; 2025 StreamFlix. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize animations
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+        
+        // Initialize Feather Icons
+        feather.replace();
+        
+        // Initialize Vanta.js Globe
+        VANTA.GLOBE({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0xe50514,
+            backgroundColor: 0x0,
+            size: 0.8
+        });
+        
+        // Add scroll behavior for content rows
+        document.querySelectorAll('.content-row').forEach(row => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+            
+            row.addEventListener('mousedown', (e) => {
+                isDown = true;
+                startX = e.pageX - row.offsetLeft;
+                scrollLeft = row.scrollLeft;
+            });
+            
+            row.addEventListener('mouseleave', () => {
+                isDown = false;
+            });
+            
+            row.addEventListener('mouseup', () => {
+                isDown = false;
+            });
+            
+            row.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - row.offsetLeft;
+                const walk = (x - startX) * 2;
+                row.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
+</body>
+</html>
